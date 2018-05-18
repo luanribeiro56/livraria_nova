@@ -87,7 +87,7 @@
                         <td><%=item.getNome() %></td>
                         <td><%=item.getSexo()%></td>
                         <td><%=item.getNacionalidade()%></td>
-                        <td><img src = "../arquivos/<%=item.getFoto()%>" width="100" height = "80" /></td>
+                        <td><img src = "../../arquivos/<%=item.getFoto()%>" width="100" height = "80" /></td>
                         <td><a href="upd.jsp?Id=<%=item.getId()%>" class="btn  btn-primary btn-sm">Alterar</a>
                             <button class="btn  btn-danger btn-sm" data-toggle="modal" data-target="#myModal" onclick="codigo=<%=item.getId()%>">Excluir</button>  
                         </td>

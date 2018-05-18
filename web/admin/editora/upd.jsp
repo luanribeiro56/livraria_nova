@@ -15,7 +15,14 @@ String classe = "";
         //popular com oq ele digitou no form
         obj.setCnpj(request.getParameter("txtID"));
         obj.setNome(request.getParameter("txtNome"));
-        obj.setLogo(request.getParameter("txtLogo"));   
+        if (request.getParameter("txtLogo") != null) 
+        {
+            obj.setLogo(request.getParameter("txtLogo"));
+        }
+        else
+        {
+            obj.setLogo(request.getParameter("txtFotoVelha"));
+        }
         Boolean resultado = dao.alterar(obj);
         
         if(resultado){
@@ -71,7 +78,7 @@ String classe = "";
             <div class="alert <%=classe%>">
                 <%=msg%>
             </div>
-            <form action="../UploadWS" method="post" enctype="multipart/form-data">
+            <form action="../../UploadWS" method="post" enctype="multipart/form-data">
                 
                 <div class="col-lg-6">
 
@@ -87,7 +94,8 @@ String classe = "";
                     <div class="form-group">
                         <label>Logo: </label>
                         <input class="" type="file"  name="txtLogo"  required />
-                        <
+                        <input type="hidden" name="txtFotoVelha" value="<%=obj.getLogo()%>" />
+                        <img src="../../arquivos/<%=obj.getLogo()%>" id="img1" width="100" height = "80" />
                     </div>
 
 
@@ -102,3 +110,19 @@ String classe = "";
 </div>
 <!-- /.row -->
 <%@include file="../rodape.jsp" %>
+<script>
+    function readURL(input,destino) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#'+destino).attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $("#arquivo").change(function(){
+        readURL(this,"img1");
+    });

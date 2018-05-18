@@ -71,7 +71,7 @@ String selecionado;
         }
         
         
-        obj = dao.buscarPorChavePrimaria(Integer.parseInt(request.getParameter("Id")));
+        obj = dao.buscarPorChavePrimaria(Integer.parseInt(request.getParameter("id")));
         
         if(obj == null){
             response.sendRedirect("index.jsp");

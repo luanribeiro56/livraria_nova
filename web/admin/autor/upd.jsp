@@ -79,7 +79,7 @@ String classe = "";
             <div class="alert <%=classe%>">
                 <%=msg%>
             </div>
-            <form action="../UploadWS" method="post" enctype="multipart/form-data">
+            <form action="../../UploadWS" method="post" enctype="multipart/form-data">
                 
                 <div class="col-lg-6">
 
@@ -105,9 +105,10 @@ String classe = "";
                     </div>
                   <div class="form-group">
                         <label>Foto: </label>
-                        <input class="" type="file"  name="txtFoto1" id="txtFoto1"  accept="image/*"/>
-                        <img src="../arquivos/<%=obj.getFoto()%>" id="img1"/>
+                        <input class="" type="file"  name="txtFoto" id="arquivo"  accept="image/*"/>
                         <input type="hidden" name="txtFotoVelha" value="<%=obj.getFoto()%>" />
+                        <img src="../../arquivos/<%=obj.getFoto()%>" id="img1" width="100" height = "80" />
+                        
                     </div>
 
 
@@ -135,6 +136,6 @@ String classe = "";
         }
     }
     
-    $("#arquivo1").change(function(){
+    $("#arquivo").change(function(){
         readURL(this,"img1");
     });

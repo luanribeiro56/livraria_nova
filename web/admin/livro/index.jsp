@@ -99,7 +99,7 @@
                         <td><img src = "../../arquivos/<%=item.getFoto1()%>" width="100" height = "80" /></td>
                         <td><img src = "../../arquivos/<%=item.getFoto2()%>" width="100" height = "80" /></td>
                         <td><img src = "../../arquivos/<%=item.getFoto3()%>" width="100" height = "80" /></td>
-                        <td><a href="upd.jsp?Id=<%=item.getId()%>" class="btn  btn-primary btn-sm">Alterar</a>
+                        <td><a href="upd.jsp?id=<%=item.getId()%>" class="btn  btn-primary btn-sm">Alterar</a>
                             <button class="btn  btn-danger btn-sm" data-toggle="modal" data-target="#myModal" onclick="codigo=<%=item.getId()%>">Excluir</button>  
                         </td>
                     </tr>
