@@ -44,9 +44,24 @@ String selecionado;
             e.setCnpj(request.getParameter("txtEditora"));
             obj.setCategoria(c);
             obj.setEditora(e);
-            obj.setFoto1(request.getParameter("txtFoto1"));
-            obj.setFoto2(request.getParameter("txtFoto2"));
-            obj.setFoto3(request.getParameter("txtFoto3"));
+            if(request.getParameter("txtFoto1") != null)
+            {
+                obj.setFoto1(request.getParameter("txtFoto1"));
+            }
+            else if(request.getParameter("txtFoto2") != null)
+            {
+                obj.setFoto2(request.getParameter("txtFoto2"));
+            }
+            else if(request.getParameter("txtFoto3") != null)
+            {
+                obj.setFoto3(request.getParameter("txtFoto3"));
+            }
+            else 
+            {
+                obj.setFoto1(request.getParameter("txtFotoVelha1"));
+                obj.setFoto2(request.getParameter("txtFotoVelha2"));
+                obj.setFoto3(request.getParameter("txtFotoVelha3"));
+            }
             List<Autor> listaautores = new ArrayList<>();
             for (String id : autoresid) {
                 Integer idinteger = Integer.parseInt(id);
@@ -113,7 +128,7 @@ String selecionado;
             <div class="alert <%=classe%>">
                 <%=msg%>
             </div>
-            <form action="../UploadWS" method="post" enctype="multipart/form-data">
+            <form action="../../UploadWS" method="post" enctype="multipart/form-data">
 
                 <div class="col-lg-6">
                     <div class="form-group">
@@ -154,7 +169,7 @@ String selecionado;
                          %>      
                          
                       
-                         <option value = "<%=item.getId()%>">
+                         <option value = "<%=item.getId()%>" <%=selecionado%>>
                              <%=item.getNome()%>
                          </option>
                          <%
@@ -179,7 +194,7 @@ String selecionado;
                                }
                                    
                          %>
-                         <option value = "<%=item.getCnpj()%>">
+                         <option value = "<%=item.getCnpj()%>" <%=selecionado%>>
                              <%=item.getNome()%>
                          </option>
                          <%
@@ -202,23 +217,26 @@ String selecionado;
                                    selecionado = "";
                                }
                          %>
-                         <input type="checkbox" name="autores"  required value = "<%=item.getId()%>"><%=item.getNome()%>
+                         <input type="checkbox" name="autores"   value = "<%=item.getId()%>"><%=item.getNome()%> <%=selecionado%>>
                          <%}%>
                     </div>
                     <div class="form-group">
                         <label>Foto: </label>
                         <input class="" type="file"  name="txtFoto1" id="txtFoto1"  accept="image/*"/>
-                        <img src="../arquivos/<%=obj.getFoto1()%>" id="img1"/>
+                        <img src="../../arquivos/<%=obj.getFoto1()%>" id="img1" width="100" height = "80" />
+                        <input type="hidden" name="txtFotoVelha1" value="<%=obj.getFoto1()%>" />
                     </div>
                     <div class="form-group">
                         <label>Foto 2: </label>
                         <input class="" type="file"  name="txtFoto2" id="txtFoto2"  accept="image/*"/>
-                        <img src="../arquivos/<%=obj.getFoto2()%>" id="img2"/>
+                        <img src="../../arquivos/<%=obj.getFoto2()%>" id="img1" width="100" height = "80" />
+                        <input type="hidden" name="txtFotoVelha2" value="<%=obj.getFoto2()%>" />
                     </div>
                     <div class="form-group">
                         <label>Foto 3: </label>
                         <input class="" type="file"  name="txtFoto3" id="txtFoto3"  accept="image/*"/>
-                        <img src="../arquivos/<%=obj.getFoto3()%>" id="img3"/>
+                        <img src="../../arquivos/<%=obj.getFoto3()%>" id="img1" width="100" height = "80" />
+                        <input type="hidden" name="txtFotoVelha3" value="<%=obj.getFoto3()%>" />
                     </div>
 
 
