@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/livraria_Luan1"/>
+<Context path="/livraria_Luan1">
+  <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="livraria_Luan" password="postgres" type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/livraria_Luan" username="postgres"/>
+  <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="20" maxIdle="10" maxWait="-1" name="livraria" password="postgres" type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/livrariaLuan" username="postgres"/>
+</Context>
