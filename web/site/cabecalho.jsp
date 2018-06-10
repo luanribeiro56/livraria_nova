@@ -154,13 +154,6 @@
                 <div class="container h-100">
                     <div class="row h-100">
                         <div class="col-12 d-md-flex justify-content-between">
-                            <!-- Header Social Area -->
-                            <div class="header-social-area">
-                                <a href="#"><span class="karl-level">Share</span> <i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
                             <!-- Menu Area -->
                             <div class="main-menu-area">
                                 <nav class="navbar navbar-expand-lg align-items-start">
