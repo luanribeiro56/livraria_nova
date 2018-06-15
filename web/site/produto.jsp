@@ -1,4 +1,10 @@
+<%@page import="modelo.Livro"%>
+<%@page import="dao.LivroDAO"%>
 <%@include file="cabecalho.jsp" %>
+<%
+    LivroDAO ldao = new LivroDAO();
+    List<Livro> lista = ldao.listar();
+    %>
         <!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area Start >>>>>>>>>>>>>>>>>>>>>>>>> -->
         <section class="single_product_details_area section_padding_0_100">
             <div class="container">

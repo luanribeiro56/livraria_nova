@@ -22,7 +22,7 @@ public  class Conexao {
 
     public static EntityManagerFactory getConexao() throws Exception {
         if ((emf == null) || (!emf.isOpen())) {
-             emf = Persistence.createEntityManagerFactory("livraria_Luan1PU");
+             emf = Persistence.createEntityManagerFactory("livrariaLuan1PU");
         }
         return emf;
     }  
