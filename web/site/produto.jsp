@@ -2,8 +2,8 @@
 <%@page import="dao.LivroDAO"%>
 <%@include file="cabecalho.jsp" %>
 <%
-    LivroDAO ldao = new LivroDAO();
-    List<Livro> lista = ldao.listar();
+    Livro livro = new Livro();
+    livro = livrodao.buscarPorChavePrimaria(Integer.parseInt(request.getParameter("Id")));
     %>
         <!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area Start >>>>>>>>>>>>>>>>>>>>>>>>> -->
         <section class="single_product_details_area section_padding_0_100">
@@ -28,22 +28,17 @@
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
                                         <a class="gallery_img" href="img/product-img/product-9.jpg">
-                                        <img class="d-block w-100" src="img/product-img/product-9.jpg" alt="First slide">
+                                        <img src = "../arquivos/<%=livro.getFoto1()%>" width="100" height = "80" />
                                     </a>
                                     </div>
                                     <div class="carousel-item">
                                         <a class="gallery_img" href="img/product-img/product-2.jpg">
-                                        <img class="d-block w-100" src="img/product-img/product-2.jpg" alt="Second slide">
+                                        <img src = "../arquivos/<%=livro.getFoto2()%>" width="100" height = "80" />
                                     </a>
                                     </div>
                                     <div class="carousel-item">
                                         <a class="gallery_img" href="img/product-img/product-3.jpg">
-                                        <img class="d-block w-100" src="img/product-img/product-3.jpg" alt="Third slide">
-                                    </a>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <a class="gallery_img" href="img/product-img/product-4.jpg">
-                                        <img class="d-block w-100" src="img/product-img/product-4.jpg" alt="Fourth slide">
+                                        <img src = "../arquivos/<%=livro.getFoto3()%>" width="100" height = "80" />
                                     </a>
                                     </div>
                                 </div>
@@ -54,9 +49,9 @@
                     <div class="col-12 col-md-6">
                         <div class="single_product_desc">
 
-                            <h4 class="title"><a href="#">Long Yellow Dress</a></h4>
+                            <h4 class="title"><a href="#"><%=livro.getNome()%></a></h4>
 
-                            <h4 class="price">$ 39.99</h4>
+                            <h4 class="price"><%=livro.getPreco()%></h4>
 
                             <p class="available">Available: <span class="text-muted">In Stock</span></p>
 
@@ -77,7 +72,7 @@
                                     <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
                                     <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                 </div>
-                                <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Add to cart</button>
+                                <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Adicionar ao Carrinho</button>
                             </form>
 
                             <div id="accordion" role="tablist">
@@ -90,9 +85,7 @@
 
                                     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut consectetur lacus.</p>
-                                            <p>Approx length 66cm/26" (Based on a UK size 8 sample) Mixed fibres</p>
-                                            <p>The Model wears a UK size 8/ EU size 36/ US size 4 and her height is 5'8"</p>
+                                            <p><%=livro.getSinopse()%></p>
                                         </div>
                                     </div>
                                 </div>
@@ -104,8 +97,7 @@
                                     </div>
                                     <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in veritatis officia inventore, tempore provident dignissimos nemo, nulla quaerat. Quibusdam non, eos, voluptatem reprehenderit hic nam! Laboriosam, sapiente! Praesentium.</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia magnam laborum eaque.</p>
+                                            <p>Autores: <%=livro.getAutorList()%></p>
                                         </div>
                                     </div>
                                 </div>
@@ -117,8 +109,17 @@
                                     </div>
                                     <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo sint repudiandae suscipit ab soluta delectus voluptate, vero vitae, tempore maxime rerum iste dolorem mollitia perferendis distinctio. Quibusdam laboriosam rerum distinctio. Repudiandae fugit odit, sequi id!</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae qui maxime consequatur laudantium temporibus ad et. A optio inventore deleniti ipsa.</p>
+                                            <p>Data de Publicação: <%=livro.getDatapublicacao()%></p>
+                                        </div>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Editora: <%=livro.getEditora()%></p>
+                                        </div>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                        <div class="card-body">
+                                            <p>Categoria: <%=livro.getCategoria()%></p>
                                         </div>
                                     </div>
                                 </div>

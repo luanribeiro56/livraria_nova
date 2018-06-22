@@ -3,8 +3,30 @@
 <%@page import="dao.LivroDAO"%>
 <%@include file="cabecalho.jsp" %>
 <%
-    LivroDAO livrodao = new LivroDAO();
-    List<Livro> lista = livrodao.listar();
+    
+    if (request.getParameter("categoriaid")!= null) {
+        
+        Integer id = Integer.parseInt(request.getParameter("categoriaid"));
+        Categoria c = cdao.buscarPorChavePrimaria(id);
+        listas = c.getLivroList();    
+        }
+  
+    else if (request.getParameter("autorid")!= null) {
+        
+        Integer id = Integer.parseInt(request.getParameter("autorid"));
+        Autor a = adao.buscarPorChavePrimaria(id);
+        listas = a.getLivroList();    
+        }
+  
+    else if (request.getParameter("editoraid")!= null) {
+        
+        String id = request.getParameter("editoraid");
+        Editora e = edao.buscarPorChavePrimaria(id);
+        listas = e.getLivroList();    
+        }
+    else{
+        listas = livrodao.listar();
+    }
     %>
 
     <div class="modal fade" id="quickview" tabindex="-1" role="dialog" aria-labelledby="quickview" aria-hidden="true">
@@ -17,47 +39,6 @@
                     <div class="modal-body">
                         <div class="quickview_body">    
                             <div class="container">
-                                <div class="row">
-                                    <div class="col-12 col-lg-5">
-                                        <div class="quickview_pro_img">
-                                            <img src="img/product-img/product-1.jpg" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-7">
-                                        <div class="quickview_pro_des">
-                                            <h4 class="title">Boutique Silk Dress</h4>
-                                            <div class="top_seller_product_rating mb-15">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                            </div>
-                                            <h5 class="price">$120.99 <span>$130</span></h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia expedita quibusdam aspernatur, sapiente consectetur accusantium perspiciatis praesentium eligendi, in fugiat?</p>
-                                            <a href="produto.jsp">View Full Product Details</a>
-                                        </div>
-                                        <!-- Add to Cart Form -->
-                                        <form class="cart" method="post">
-                                            <div class="quantity">
-                                                <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-minus" aria-hidden="true"></i></span>
-
-                                                <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
-
-                                                <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                            </div>
-                                            <button type="submit" name="addtocart" value="5" class="cart-submit">Add to cart</button>
-                                            <!-- Wishlist -->
-                                            <div class="modal_pro_wishlist">
-                                                <a href="wishlist.html" target="_blank"><i class="ti-heart"></i></a>
-                                            </div>
-                                            <!-- Compare -->
-                                            <div class="modal_pro_compare">
-                                                <a href="compare.html" target="_blank"><i class="ti-stats-up"></i></a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -67,7 +48,7 @@
     <section class="new_arrivals_area section_padding_100_0 clearfix">
     <!--Inicia lista de livros-->
     <%
-        for (Livro livro : lista) {
+        for (Livro livro : listas) {
                 
         %>
     <div class="container">
@@ -79,7 +60,7 @@
                         <div class="product-img">
                             <img src = "../arquivos/<%=livro.getFoto1()%>" width="100" height = "80" />
                             <div class="product-quicview">
-                                <a href="#" data-toggle="modal" data-target="#quickview"><i class="ti-plus"></i></a>
+                                <a href="produto.jsp"><i class="ti-plus"></i></a>
                             </div>
                         </div>
                         <!-- Product Description -->

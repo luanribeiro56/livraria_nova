@@ -1,3 +1,9 @@
+<%@page import="dao.LivroDAO"%>
+<%@page import="modelo.Editora"%>
+<%@page import="dao.EditoraDAO"%>
+<%@page import="modelo.Autor"%>
+<%@page import="dao.AutorDAO"%>
+<%@page import="modelo.Livro"%>
 <%@page import="modelo.Categoria"%>
 <%@page import="java.util.List"%>
 <%@page import="dao.CategoriaDAO"%>
@@ -5,6 +11,14 @@
 <%
     CategoriaDAO cdao = new CategoriaDAO();
     List<Categoria> listar = cdao.listar();
+    AutorDAO adao = new AutorDAO();
+    List<Autor> lista = adao.listar();
+    EditoraDAO edao = new EditoraDAO();
+    List<Editora> elista = edao.listar();
+    LivroDAO livrodao = new LivroDAO();
+    List<Livro> listas = livrodao.listar();
+    
+    
 %>
 <html lang="pt-br">
 
@@ -31,34 +45,6 @@
     </head>
 
     <body>
-        <div class="catagories-side-menu">
-            <!-- Close Icon -->
-            <div id="sideMenuClose">
-                <i class="ti-close"></i>
-            </div>
-            <div class="nav-side-menu">
-                <div class="menu-list">
-                    <h6>Categories</h6>
-                    <ul id="menu-content" class="menu-content collapse out">
-                        <%for (Categoria item : listar) {
-                        %>
-                        <!-- Single Item -->
-                        <li data-toggle="collapse" data-target="#women" class="collapsed active">
-                            <a href="#"><%=item.getNome()%> <span class="arrow"></span></a>
-                            <ul class="sub-menu collapse" id="women">
-                                <li><a href="#">Midi Dresses</a></li>
-                                <li><a href="#">Maxi Dresses</a></li>
-                                <li><a href="#">Prom Dresses</a></li>
-                                <li><a href="#">Little Black Dresses</a></li>
-                                <li><a href="#">Mini Dresses</a></li>
-                            </ul>
-                        </li>
-                        <%}%>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
         <div id="wrapper">
 
             <!-- ****** Header Area Start ****** -->
@@ -139,8 +125,33 @@
                                                         <a class="dropdown-item" href="formulario.jsp">Formulario do Cliente</a>
                                                     </div>
                                                 </li>
-                                                <li class="nav-item"><a class="nav-link" href="#">Dresses</a></li>
-                                                <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> Shoes</a></li>
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Autores</a>
+                                                    <div class="dropdown-menu" aria-labelledby="karlDropdown">
+                                                        <%for (Autor item : lista) {
+                                                        %>
+                                                        <a class="dropdown-item" href="index.jsp?autorid=<%=item.getId()%>"><%=item.getNome()%></a>
+                                                        <%}%>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Editoras</a>
+                                                    <div class="dropdown-menu" aria-labelledby="karlDropdown">
+                                                        <%for (Editora item : elista) {
+                                                        %>
+                                                        <a class="dropdown-item" href="index.jsp?editoraid=<%=item.getCnpj()%>"><%=item.getNome()%></a>
+                                                        <%}%>
+                                                    </div>
+                                                </li>
+                                                  <li class="nav-item dropdown">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categorias</a>
+                                                    <div class="dropdown-menu" aria-labelledby="karlDropdown">
+                                                        <%for (Categoria item : listar) {
+                                                        %>
+                                                        <a class="dropdown-item" href="index.jsp?categoriaid=<%=item.getId()%>"><%=item.getNome()%></a>
+                                                        <%}%>
+                                                    </div>
+                                                </li>
                                                 <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                                             </ul>
                                         </div>
