@@ -1,9 +1,18 @@
+<%@page import="util.StormData"%>
 <%@page import="modelo.Livro"%>
 <%@page import="dao.LivroDAO"%>
 <%@include file="cabecalho.jsp" %>
 <%
+    if (request.getParameter("Id") == null) 
+    {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+    
     Livro livro = new Livro();
     livro = livrodao.buscarPorChavePrimaria(Integer.parseInt(request.getParameter("Id")));
+    
+
     %>
         <!-- <<<<<<<<<<<<<<<<<<<< Single Product Details Area Start >>>>>>>>>>>>>>>>>>>>>>>>> -->
         <section class="single_product_details_area section_padding_0_100">
@@ -15,30 +24,28 @@
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
 
                                 <ol class="carousel-indicators">
-                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(img/product-img/product-9.jpg);">
+                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(../arquivos/<%=livro.getFoto1()%>);">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(img/product-img/product-2.jpg);">
+                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(../arquivos/<%=livro.getFoto2()%>);">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(img/product-img/product-3.jpg);">
-                                    </li>
-                                    <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(img/product-img/product-4.jpg);">
+                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(../arquivos/<%=livro.getFoto3()%>);">
                                     </li>
                                 </ol>
 
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a class="gallery_img" href="img/product-img/product-9.jpg">
-                                        <img src = "../arquivos/<%=livro.getFoto1()%>" width="100" height = "80" />
+                                        <a class="gallery_img" href="../arquivos/<%=livro.getFoto1()%>">
+                                        <img src = "../arquivos/<%=livro.getFoto1()%>" width="300" height = "400" />
                                     </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="img/product-img/product-2.jpg">
-                                        <img src = "../arquivos/<%=livro.getFoto2()%>" width="100" height = "80" />
+                                        <a class="gallery_img" href="../arquivos/<%=livro.getFoto2()%>">
+                                        <img src = "../arquivos/<%=livro.getFoto2()%>" width="300" height = "400" />
                                     </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="img/product-img/product-3.jpg">
-                                        <img src = "../arquivos/<%=livro.getFoto3()%>" width="100" height = "80" />
+                                        <a class="gallery_img" href="../arquivos/<%=livro.getFoto3()%>">
+                                        <img src = "../arquivos/<%=livro.getFoto3()%>"width="300" height = "400" />
                                     </a>
                                     </div>
                                 </div>
@@ -53,7 +60,7 @@
 
                             <h4 class="price"><%=livro.getPreco()%></h4>
 
-                            <p class="available">Available: <span class="text-muted">In Stock</span></p>
+                            <p class="available">Avaliação: <span class="text-muted">Em estoque</span></p>
 
                             <div class="single_product_ratings mb-15">
                                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -79,7 +86,7 @@
                                 <div class="card">
                                     <div class="card-header" role="tab" id="headingOne">
                                         <h6 class="mb-0">
-                                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Information</a>
+                                            <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Sinopse</a>
                                         </h6>
                                     </div>
 
@@ -92,34 +99,53 @@
                                 <div class="card">
                                     <div class="card-header" role="tab" id="headingTwo">
                                         <h6 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Cart Details</a>
+                                            <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Autores: </a>
                                         </h6>
                                     </div>
                                     <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>Autores: <%=livro.getAutorList()%></p>
+                                            <p>
+                                            <%for (Autor a : livro.getAutorList()) 
+                                                    {
+                                            %>
+                                            <a href="detalhe_autor.jsp?id=<%=a.getId()%>"><%=a.getNome()%></a>
+                                            <%}%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="card">
                                     <div class="card-header" role="tab" id="headingThree">
                                         <h6 class="mb-0">
-                                            <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">shipping &amp; Returns</a>
+                                            <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Data de Publicação:</a>
                                         </h6>
                                     </div>
                                     <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>Data de Publicação: <%=livro.getDatapublicacao()%></p>
+                                            <p> <%=StormData.formata(livro.getDatapublicacao())%></p>
                                         </div>
                                     </div>
-                                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                </div>
+                                <div class="card">        
+                                    <div class="card-header" role="tab" id="headingFour">
+                                        <h6 class="mb-0">
+                                            <a class="collapsed" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Editora:</a>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>Editora: <%=livro.getEditora()%></p>
+                                            <p><%=livro.getEditora()%></p>
                                         </div>
                                     </div>
-                                    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+                                </div>
+                                <div class="card">                                        
+                                    <div class="card-header" role="tab" id="headingFive">
+                                        <h6 class="mb-0">
+                                            <a class="collapsed" data-toggle="collapse" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">Categoria:</a>
+                                        </h6>
+                                    </div>
+                                    <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive" data-parent="#accordion">
                                         <div class="card-body">
-                                            <p>Categoria: <%=livro.getCategoria()%></p>
+                                            <p><%=livro.getCategoria()%></p>
                                         </div>
                                     </div>
                                 </div>

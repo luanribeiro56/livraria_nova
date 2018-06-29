@@ -19,6 +19,7 @@
     List<Livro> listas = livrodao.listar();
     
     
+    
 %>
 <html lang="pt-br">
 
@@ -90,9 +91,6 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="header-right-side-menu ml-15">
-                                            <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -156,10 +154,6 @@
                                             </ul>
                                         </div>
                                     </nav>
-                                </div>
-                                <!-- Help Line -->
-                                <div class="help-line">
-                                    <a href="tel:+346573556778"><i class="ti-headphone-alt"></i> +34 657 3556 778</a>
                                 </div>
                             </div>
                         </div>

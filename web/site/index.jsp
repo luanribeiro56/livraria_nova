@@ -60,7 +60,7 @@
                         <div class="product-img">
                             <img src = "../arquivos/<%=livro.getFoto1()%>" width="100" height = "80" />
                             <div class="product-quicview">
-                                <a href="produto.jsp"><i class="ti-plus"></i></a>
+                                <a href="produto.jsp?Id=<%=livro.getId()%>"><i class="ti-plus"></i></a>
                             </div>
                         </div>
                         <!-- Product Description -->
