@@ -24,11 +24,10 @@ import javax.persistence.Table;
  * @author Luan
  */
 @Entity
-@Table(name = "categoria")
+@Table(name = "cliente")
 @NamedQueries({
-    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c"),
-    @NamedQuery(name = "Categoria.findFilter", query = "SELECT c FROM Categoria c WHERE c.nome like :filtro")})
-public class Categoria implements Serializable {
+    @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c")})
+public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,19 +38,31 @@ public class Categoria implements Serializable {
     @Basic(optional = false)
     @Column(name = "nome")
     private String nome;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
-    private List<Livro> livroList;
+    @Basic(optional = false)
+    @Column(name = "endereco")
+    private String endereco;
+    @Basic(optional = false)
+    @Column(name = "email")
+    private String email;
+    @Basic(optional = false)
+    @Column(name = "senha")
+    private String senha;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cliente")
+    private List<Compra> compraList;
 
-    public Categoria() {
+    public Cliente() {
     }
 
-    public Categoria(Integer id) {
+    public Cliente(Integer id) {
         this.id = id;
     }
 
-    public Categoria(Integer id, String nome) {
+    public Cliente(Integer id, String nome, String endereco, String email, String senha) {
         this.id = id;
         this.nome = nome;
+        this.endereco = endereco;
+        this.email = email;
+        this.senha = senha;
     }
 
     public Integer getId() {
@@ -70,12 +81,36 @@ public class Categoria implements Serializable {
         this.nome = nome;
     }
 
-    public List<Livro> getLivroList() {
-        return livroList;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setLivroList(List<Livro> livroList) {
-        this.livroList = livroList;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public List<Compra> getCompraList() {
+        return compraList;
+    }
+
+    public void setCompraList(List<Compra> compraList) {
+        this.compraList = compraList;
     }
 
     @Override
@@ -88,10 +123,10 @@ public class Categoria implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Categoria)) {
+        if (!(object instanceof Cliente)) {
             return false;
         }
-        Categoria other = (Categoria) object;
+        Cliente other = (Cliente) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +135,7 @@ public class Categoria implements Serializable {
 
     @Override
     public String toString() {
-        return  "id:" + id;
+        return "modelo.Cliente[ id=" + id + " ]";
     }
     
 }

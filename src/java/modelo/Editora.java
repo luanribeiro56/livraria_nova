@@ -107,7 +107,7 @@ public class Editora implements Serializable {
 
     @Override
     public String toString() {
-        return this.nome;
+        return  cnpj;
     }
     
 }

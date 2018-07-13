@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,6 +20,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -50,16 +52,18 @@ public class Livro implements Serializable {
     @Column(name = "datapublicacao")
     @Temporal(TemporalType.DATE)
     private Date datapublicacao;
-    @Column(name = "foto1")
-    private String foto1;
-    @Column(name = "foto2")
-    private String foto2;
-    @Column(name = "foto3")
-    private String foto3;
+    @Column(name = "imagem1")
+    private String imagem1;
+    @Column(name = "imagem2")
+    private String imagem2;
+    @Column(name = "imagem3")
+    private String imagem3;
     @Column(name = "sinopse")
     private String sinopse;
     @ManyToMany(mappedBy = "livroList")
     private List<Autor> autorList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "livro")
+    private List<CompraLivro> compraLivroList;
     @JoinColumn(name = "categoria", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Categoria categoria;
@@ -113,28 +117,28 @@ public class Livro implements Serializable {
         this.datapublicacao = datapublicacao;
     }
 
-    public String getFoto1() {
-        return foto1;
+    public String getImagem1() {
+        return imagem1;
     }
 
-    public void setFoto1(String foto1) {
-        this.foto1 = foto1;
+    public void setImagem1(String imagem1) {
+        this.imagem1 = imagem1;
     }
 
-    public String getFoto2() {
-        return foto2;
+    public String getImagem2() {
+        return imagem2;
     }
 
-    public void setFoto2(String foto2) {
-        this.foto2 = foto2;
+    public void setImagem2(String imagem2) {
+        this.imagem2 = imagem2;
     }
 
-    public String getFoto3() {
-        return foto3;
+    public String getImagem3() {
+        return imagem3;
     }
 
-    public void setFoto3(String foto3) {
-        this.foto3 = foto3;
+    public void setImagem3(String imagem3) {
+        this.imagem3 = imagem3;
     }
 
     public String getSinopse() {
@@ -151,6 +155,14 @@ public class Livro implements Serializable {
 
     public void setAutorList(List<Autor> autorList) {
         this.autorList = autorList;
+    }
+
+    public List<CompraLivro> getCompraLivroList() {
+        return compraLivroList;
+    }
+
+    public void setCompraLivroList(List<CompraLivro> compraLivroList) {
+        this.compraLivroList = compraLivroList;
     }
 
     public Categoria getCategoria() {
@@ -191,7 +203,7 @@ public class Livro implements Serializable {
 
     @Override
     public String toString() {
-        return this.nome;
+        return "modelo.Livro[ id=" + id + " ]";
     }
     
 }

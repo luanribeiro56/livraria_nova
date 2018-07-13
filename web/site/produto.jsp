@@ -24,28 +24,28 @@
                             <div id="product_details_slider" class="carousel slide" data-ride="carousel">
 
                                 <ol class="carousel-indicators">
-                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(../arquivos/<%=livro.getFoto1()%>);">
+                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(../arquivos/<%=livro.getImagem1()%>);">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(../arquivos/<%=livro.getFoto2()%>);">
+                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(../arquivos/<%=livro.getImagem2()%>);">
                                     </li>
-                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(../arquivos/<%=livro.getFoto3()%>);">
+                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(../arquivos/<%=livro.getImagem3()%>);">
                                     </li>
                                 </ol>
 
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a class="gallery_img" href="../arquivos/<%=livro.getFoto1()%>">
-                                        <img src = "../arquivos/<%=livro.getFoto1()%>" width="300" height = "400" />
+                                        <a class="gallery_img" href="../arquivos/<%=livro.getImagem1()%>">
+                                        <img src = "../arquivos/<%=livro.getImagem1()%>" width="300" height = "400" />
                                     </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="../arquivos/<%=livro.getFoto2()%>">
-                                        <img src = "../arquivos/<%=livro.getFoto2()%>" width="300" height = "400" />
+                                        <a class="gallery_img" href="../arquivos/<%=livro.getImagem2()%>">
+                                        <img src = "../arquivos/<%=livro.getImagem2()%>" width="300" height = "400" />
                                     </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="../arquivos/<%=livro.getFoto3()%>">
-                                        <img src = "../arquivos/<%=livro.getFoto3()%>"width="300" height = "400" />
+                                        <a class="gallery_img" href="../arquivos/<%=livro.getImagem3()%>">
+                                        <img src = "../arquivos/<%=livro.getImagem3()%>"width="300" height = "400" />
                                     </a>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                     <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
                                     <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                 </div>
-                                <button type="submit" name="addtocart" value="5" class="btn cart-submit d-block">Adicionar ao Carrinho</button>
+                                <button type="submit" name="addtocart" href="carrinho.jsp?id=<%=livro.getId()%>" value="5" class="btn cart-submit d-block">Adicionar ao Carrinho</button>
                             </form>
 
                             <div id="accordion" role="tablist">

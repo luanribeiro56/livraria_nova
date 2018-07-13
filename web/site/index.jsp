@@ -58,7 +58,7 @@
                     <div class="col-12 col-sm-6 col-md-4 single_gallery_item women wow fadeInUpBig" data-wow-delay="0.2s">
                         <!-- Product Image -->
                         <div class="product-img">
-                            <img src = "../arquivos/<%=livro.getFoto1()%>" width="100" height = "80" />
+                            <img src = "../arquivos/<%=livro.getImagem1()%>" width="100" height = "80" />
                             <div class="product-quicview">
                                 <a href="produto.jsp?Id=<%=livro.getId()%>"><i class="ti-plus"></i></a>
                             </div>

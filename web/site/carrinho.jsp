@@ -1,4 +1,19 @@
+<%@page import="modelo.CompraLivro"%>
 <%@include file="cabecalho.jsp" %>
+<%
+    if(request.getParameter("id")==null)
+    {
+    response.sendRedirect("index.jsp");
+    return;
+    }
+    
+    Integer id = Integer.parseInt(request.getParameter("id"));
+    LivroDAO ldao = new LivroDAO();
+    Livro l = ldao.buscarPorChavePrimaria(id);
+    List<CompraLivro> carrinho;
+    
+    
+%>
 <div class="cart_area section_padding_100 clearfix">
             <div class="container">
                 <div class="row">

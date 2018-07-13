@@ -46,21 +46,21 @@ String selecionado;
             obj.setEditora(e);
             if(request.getParameter("txtFoto1") != null)
             {
-                obj.setFoto1(request.getParameter("txtFoto1"));
+                obj.setImagem1(request.getParameter("txtFoto1"));
             }
             else if(request.getParameter("txtFoto2") != null)
             {
-                obj.setFoto2(request.getParameter("txtFoto2"));
+                obj.setImagem2(request.getParameter("txtFoto2"));
             }
             else if(request.getParameter("txtFoto3") != null)
             {
-                obj.setFoto3(request.getParameter("txtFoto3"));
+                obj.setImagem3(request.getParameter("txtFoto3"));
             }
             else 
             {
-                obj.setFoto1(request.getParameter("txtFotoVelha1"));
-                obj.setFoto2(request.getParameter("txtFotoVelha2"));
-                obj.setFoto3(request.getParameter("txtFotoVelha3"));
+                obj.setImagem1(request.getParameter("txtFotoVelha1"));
+                obj.setImagem2(request.getParameter("txtFotoVelha2"));
+                obj.setImagem3(request.getParameter("txtFotoVelha3"));
             }
             List<Autor> listaautores = new ArrayList<>();
             for (String id : autoresid) {
@@ -217,26 +217,26 @@ String selecionado;
                                    selecionado = "";
                                }
                          %>
-                         <input type="checkbox" name="autores"   value = "<%=item.getId()%>"><%=item.getNome()%> <%=selecionado%>>
+                         <input type="checkbox" name="autores"   value = "<%=item.getId()%>"><%=item.getNome()%>><<%=selecionado%>>
                          <%}%>
                     </div>
                     <div class="form-group">
                         <label>Foto: </label>
                         <input class="" type="file"  name="txtFoto1" id="txtFoto1"  accept="image/*"/>
-                        <img src="../../arquivos/<%=obj.getFoto1()%>" id="img1" width="100" height = "80" />
-                        <input type="hidden" name="txtFotoVelha1" value="<%=obj.getFoto1()%>" />
+                        <img src="../../arquivos/<%=obj.getImagem1()%>" id="img1" width="100" height = "80" />
+                        <input type="hidden" name="txtFotoVelha1" value="<%=obj.getImagem1()%>" />
                     </div>
                     <div class="form-group">
                         <label>Foto 2: </label>
                         <input class="" type="file"  name="txtFoto2" id="txtFoto2"  accept="image/*"/>
-                        <img src="../../arquivos/<%=obj.getFoto2()%>" id="img1" width="100" height = "80" />
-                        <input type="hidden" name="txtFotoVelha2" value="<%=obj.getFoto2()%>" />
+                        <img src="../../arquivos/<%=obj.getImagem2()%>" id="img1" width="100" height = "80" />
+                        <input type="hidden" name="txtFotoVelha2" value="<%=obj.getImagem2()%>" />
                     </div>
                     <div class="form-group">
                         <label>Foto 3: </label>
                         <input class="" type="file"  name="txtFoto3" id="txtFoto3"  accept="image/*"/>
-                        <img src="../../arquivos/<%=obj.getFoto3()%>" id="img1" width="100" height = "80" />
-                        <input type="hidden" name="txtFotoVelha3" value="<%=obj.getFoto3()%>" />
+                        <img src="../../arquivos/<%=obj.getImagem3()%>" id="img1" width="100" height = "80" />
+                        <input type="hidden" name="txtFotoVelha3" value="<%=obj.getImagem3()%>" />
                     </div>
 
 

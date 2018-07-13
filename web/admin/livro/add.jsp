@@ -45,9 +45,9 @@
             e.setCnpj(request.getParameter("txtEditora"));
             obj.setCategoria(c);
             obj.setEditora(e);
-            obj.setFoto1(request.getParameter("txtFoto"));
-            obj.setFoto2(request.getParameter("txtFoto2"));
-            obj.setFoto3(request.getParameter("txtFoto3"));
+            obj.setImagem1(request.getParameter("txtFoto"));
+            obj.setImagem2(request.getParameter("txtFoto2"));
+            obj.setImagem3(request.getParameter("txtFoto3"));
             //Autores
             List<Autor> listaautores = new ArrayList<>();
             for (String id : autoresid) {

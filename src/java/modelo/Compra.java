@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -24,11 +26,10 @@ import javax.persistence.Table;
  * @author Luan
  */
 @Entity
-@Table(name = "categoria")
+@Table(name = "compra")
 @NamedQueries({
-    @NamedQuery(name = "Categoria.findAll", query = "SELECT c FROM Categoria c"),
-    @NamedQuery(name = "Categoria.findFilter", query = "SELECT c FROM Categoria c WHERE c.nome like :filtro")})
-public class Categoria implements Serializable {
+    @NamedQuery(name = "Compra.findAll", query = "SELECT c FROM Compra c")})
+public class Compra implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -37,21 +38,28 @@ public class Categoria implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "nome")
-    private String nome;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria")
-    private List<Livro> livroList;
+    @Column(name = "endereco")
+    private String endereco;
+    @Basic(optional = false)
+    @Column(name = "valor")
+    private float valor;
+    @JoinColumn(name = "cliente", referencedColumnName = "id")
+    @ManyToOne(optional = false)
+    private Cliente cliente;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "compra")
+    private List<CompraLivro> compraLivroList;
 
-    public Categoria() {
+    public Compra() {
     }
 
-    public Categoria(Integer id) {
+    public Compra(Integer id) {
         this.id = id;
     }
 
-    public Categoria(Integer id, String nome) {
+    public Compra(Integer id, String endereco, float valor) {
         this.id = id;
-        this.nome = nome;
+        this.endereco = endereco;
+        this.valor = valor;
     }
 
     public Integer getId() {
@@ -62,20 +70,36 @@ public class Categoria implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    public List<Livro> getLivroList() {
-        return livroList;
+    public float getValor() {
+        return valor;
     }
 
-    public void setLivroList(List<Livro> livroList) {
-        this.livroList = livroList;
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<CompraLivro> getCompraLivroList() {
+        return compraLivroList;
+    }
+
+    public void setCompraLivroList(List<CompraLivro> compraLivroList) {
+        this.compraLivroList = compraLivroList;
     }
 
     @Override
@@ -88,10 +112,10 @@ public class Categoria implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Categoria)) {
+        if (!(object instanceof Compra)) {
             return false;
         }
-        Categoria other = (Categoria) object;
+        Compra other = (Compra) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +124,7 @@ public class Categoria implements Serializable {
 
     @Override
     public String toString() {
-        return  "id:" + id;
+        return "modelo.Compra[ id=" + id + " ]";
     }
     
 }
