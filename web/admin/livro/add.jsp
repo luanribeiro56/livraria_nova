@@ -48,6 +48,7 @@
             obj.setImagem1(request.getParameter("txtFoto"));
             obj.setImagem2(request.getParameter("txtFoto2"));
             obj.setImagem3(request.getParameter("txtFoto3"));
+        }
             //Autores
             List<Autor> listaautores = new ArrayList<>();
             for (String id : autoresid) {
@@ -63,7 +64,6 @@
                 msg = "Não foi possível cadastrar";
                 classe = "alert-danger";
             }
-        }
     }
      
      

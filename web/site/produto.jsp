@@ -79,7 +79,7 @@
                                     <input type="number" class="qty-text" id="qty" step="1" min="1" max="12" name="quantity" value="1">
                                     <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                                 </div>
-                                <button type="submit" name="addtocart" href="carrinho.jsp?id=<%=livro.getId()%>" value="5" class="btn cart-submit d-block">Adicionar ao Carrinho</button>
+                                <button type="submit" href="carrinho.jsp?id=<%=livro.getId()%>"  class="btn cart-submit d-block">Adicionar ao Carrinho</button>
                             </form>
 
                             <div id="accordion" role="tablist">
