@@ -39,12 +39,13 @@
         </div>
     </div>
 </div>
-<section class="new_arrivals_area section_padding_100_0 clearfix">
-    <!--Inicia lista de livros-->
-    <%
+ <%
         for (Livro livro : listas) {
 
     %>
+<section class="new_arrivals_area section_padding_100_0 clearfix">
+    <!--Inicia lista de livros-->
+   
     <div class="container">
         <div class="row karl-new-arrivals">
 
@@ -62,13 +63,13 @@
                     <h4 class="product-price"><%=livro.getPreco()%></h4>
                     <p><%=livro.getNome()%></p>
                     <!-- Add to Cart -->
-                    <a href="carrinho.jsp?id=<%=livro.getId()%>" class="add-to-cart-btn">Adicionar ao Carrinho</a>
+                    <a href="carrinho.jsp?Id=<%=livro.getId()%>" class="add-to-cart-btn">Adicionar ao Carrinho</a>
                 </div>
             </div>
         </div>
     </div>
-    <% }%>
 </section>
+<% }%>
 
 
 <%@include file="rodape.jsp" %>
