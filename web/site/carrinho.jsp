@@ -16,8 +16,8 @@
     CompraLivro cl = new CompraLivro();
     cl.setLivro(l);
     cl.setValorunitario(l.getPreco());
-    Double total;
-    total = 0.0;
+    cl.setQuantidade(1);
+    Float total = 0.0f;
     if (session.getAttribute("carrinho") != null) {
 
         carrinho = (List<CompraLivro>) session.getAttribute("carrinho");
@@ -90,9 +90,8 @@
                         <h5>Valor Total:</h5>
                     </div>
                     <%for (CompraLivro cp : carrinho) {
-                        total = total + Double.parseDouble(String.valueOf(cp.getValorunitario()));
-                    }
-                            
+                        total += cp.getValorunitario();
+                    }     
                     %>
                     <ul class="cart-total-chart">
                         <li><span><strong>Total</strong></span> <span><strong><%=total%></strong></span></li>

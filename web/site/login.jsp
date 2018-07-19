@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-12 mb-3">
                         <label for="senha">Senha <span>*</span></label>
-                        <input type="password" class="form-control" id="senha" value="" name="txtsenha">
+                        <input type="password" class="form-control" id="senha" value="" name="txtSenha">
                     </div>
                 </div>
                 <button type="submit" href=""  class="btn cart-submit d-block">Fazer Login</button>

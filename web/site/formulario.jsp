@@ -7,12 +7,15 @@
         response.sendRedirect("login.jsp");
         return;
     }
-    Cliente cli = new Cliente();
+    if (session.getAttribute("carrinho") == null) 
+    {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+    Cliente cli = (Cliente) session.getAttribute("cliente");
     List<CompraLivro> car;
     car = (List<CompraLivro>) session.getAttribute("carrinho");
-    Double total;
-    total = 0.0;
-
+    Float total = 0.0f;
 %>
 <%@include file="cabecalho.jsp" %>
 <div class="container">
@@ -57,7 +60,7 @@
                     <li><span><%=obj.getLivro().getNome()%></span> <span>$<%=obj.getValorunitario()%></span></li>
                     <%}
                     for (CompraLivro valor : car){
-                        total = total + Double.parseDouble(String.valueOf(valor.getValorunitario()));
+                        total += valor.getValorunitario();
                     }
                     %>
                     <li><span>Total</span> <span>$<%=total%></span></li>

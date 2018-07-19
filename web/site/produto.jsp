@@ -70,7 +70,7 @@
                                                 effect.value++;
                                             return false;"><i class="fa fa-plus" aria-hidden="true"></i></span>
                     </div>
-                    <button type="submit" href="carrinho.jsp?Id=<%=livro.getId()%>"  class="btn cart-submit d-block">Adicionar ao Carrinho</button>
+                    <a  href="carrinho.jsp?Id=<%=livro.getId()%>"  class="btn cart-submit d-block">Adicionar ao Carrinho</a>
                 </form>
 
                 <div id="accordion" role="tablist">
