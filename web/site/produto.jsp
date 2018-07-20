@@ -77,7 +77,7 @@
                     <div class="card">
                         <div class="card-header" role="tab" id="headingOne">
                             <h6 class="mb-0">
-                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Sinopse</a>
+                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Sinopse: </a>
                             </h6>
                         </div>
 
@@ -98,7 +98,7 @@
                                 <p>
                                     <%for (Autor a : livro.getAutorList()) {
                                     %>
-                                    <a href="detalhe_autor.jsp?id=<%=a.getId()%>"><%=a.getNome()%></a>
+                                    <a href="detalhes_autor.jsp?Id=<%=a.getId()%>"><%=a.getNome()%></a>
                                     <%}%></p>
                             </div>
                         </div>
@@ -123,7 +123,7 @@
                         </div>
                         <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
                             <div class="card-body">
-                                <p><%=livro.getEditora()%></p>
+                                <p><%=livro.getEditora().getNome()%></p>
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                         </div>
                         <div id="collapseFive" class="collapse" role="tabpanel" aria-labelledby="headingFive" data-parent="#accordion">
                             <div class="card-body">
-                                <p><%=livro.getCategoria()%></p>
+                                <p><%=livro.getCategoria().getNome()%></p>
                             </div>
                         </div>
                     </div>

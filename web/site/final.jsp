@@ -29,13 +29,13 @@
     if(certo)
     {
         for (CompraLivro car : carrinho) {
+                LivroDAO ldao = new LivroDAO();
+                Livro l = ldao.buscarPorChavePrimaria(car.getLivro().getId());
+                car.setLivro(l);
                 car.setCompra(compra);
                 cldao.incluir(car);
         }
-    }
-    else
-    {
-        
+        session.setAttribute("carrinho", null);
     }
         
         
